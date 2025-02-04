@@ -1,6 +1,7 @@
 import { AddressEntity } from 'src/address/infrastructure/entities/address.entity';
 import { FileEntity } from 'src/files/infrastructure/entities/file.entity';
 import { RoleEntity } from 'src/roles/infrastructures/entities/role.entity';
+
 import { EntityRelationalHelper } from 'src/utils/relation-entity';
 import {
   Column,
@@ -23,6 +24,10 @@ export class UserEntity extends EntityRelationalHelper {
   @Index()
   @Column({ type: String, nullable: true })
   socialId?: string | null;
+
+  @Index()
+  @Column({ type: String, nullable: true })
+  provider?: string | null;
 
   @Index()
   @Column({ type: String, nullable: true })
