@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+
 import { ConfigModule } from '@nestjs/config';
 import appConfig from './config/app.config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
+import { UsersModule } from './users/users.module';
+
 import databaseConfig from './database/config/database.config';
 
 const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
@@ -23,8 +24,10 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     }),
 
     infrastructureDatabaseModule,
+
+    UsersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
